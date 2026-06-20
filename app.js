@@ -75,7 +75,6 @@ export const hash = window.location.hash
     }
     return initial;
   }, {});
-// window.location.hash = "";
 export let accessToken = hash.access_token;
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 
@@ -103,7 +102,6 @@ const scopes = [
   "user-read-private",
 ];
 
-// Nếu không có token, điều hướng về trang login
 // if (!accessToken) {
 //   window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
 //     "%20"
