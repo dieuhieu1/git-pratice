@@ -5,8 +5,7 @@ import { renderFooterSong } from "./renderData.js";
 export async function handlePlayNextTrack() {
   try {
     // Chuyển bài hát tiếp theo ngay lập tức
-    const res = await spotifyPlayer.nextTrack();
-    console.log(res);
+    await spotifyPlayer.nextTrack();
     // Thêm khoảng trễ nhỏ để đảm bảo trạng thái bài hát được cập nhật
     await new Promise((resolve) => setTimeout(resolve, 200)); // 0.5 giây để tăng tốc độ
 
