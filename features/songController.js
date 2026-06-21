@@ -3,13 +3,14 @@ import { getCurrentPlayingTrack } from "../fetchAPI.js";
 import { renderFooterSong } from "./renderData.js";
 
 export async function handlePlayNextTrack() {
+  console.log("Loại bỏ 1 số comment")
+
   try {
     // Chuyển bài hát tiếp theo ngay lập tức
     await spotifyPlayer.nextTrack();
     // Thêm khoảng trễ nhỏ để đảm bảo trạng thái bài hát được cập nhật
     await new Promise((resolve) => setTimeout(resolve, 200)); // 0.5 giây để tăng tốc độ
 
-    // Lấy thông tin bài hát đang phát
     const currentTrack = await getCurrentPlayingTrack();
     console.log(currentTrack);
     if (!currentTrack || !currentTrack.item) {
@@ -17,12 +18,10 @@ export async function handlePlayNextTrack() {
       return;
     }
 
-    // Render dữ liệu Footer
-    // Tìm chỉ số bài hát trong playlist
+
     const currentIndex = playlistItems.findIndex(
       (item) => item.track.id === currentTrack.item.id
     );
-    // Kiểm tra xem bài hát có trong danh sách phát hay không
     if (currentIndex === -1) {
       // Nếu không có, hiển thị bài hát từ API
       renderFooterSong(-1, currentTrack);
