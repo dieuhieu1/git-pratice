@@ -6,9 +6,10 @@ export async function handlePlayNextTrack() {
   console.log("Loại bỏ 1 số comment")
 
   try {
-    const res = await spotifyPlayer.nextTrack();
-    console.log(res);
-    await new Promise((resolve) => setTimeout(resolve, 200)); 
+    // Chuyển bài hát tiếp theo ngay lập tức
+    await spotifyPlayer.nextTrack();
+    // Thêm khoảng trễ nhỏ để đảm bảo trạng thái bài hát được cập nhật
+    await new Promise((resolve) => setTimeout(resolve, 200)); // 0.5 giây để tăng tốc độ
 
     const currentTrack = await getCurrentPlayingTrack();
     console.log(currentTrack);
